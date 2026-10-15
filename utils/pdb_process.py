@@ -37,7 +37,7 @@ def process_pdb(pdb_path):
 
 def main():
     # load protein file and look at atom coordinates
-    protein_frame = process_pdb('2011-2019/3rvi/3rvi_protein.pdb')
+    protein_frame = process_pdb('../2011-2019/3rvi/3rvi_protein.pdb')
     print(protein_frame)
 
     # retain only backbone atoms (ie backbones atoms)
