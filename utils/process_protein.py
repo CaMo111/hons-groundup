@@ -3,7 +3,9 @@ import numpy as np
 import ipdb
 from protein_features import compute_residue_node_features
 
-PROTEIN_3LETTER_1LETTER_MAP = {
+class processProtein():
+
+    PROTEIN_3LETTER_1LETTER_MAP = {
     'ALA': 'A',
     'CYS': 'C',
     'ASP': 'D',
@@ -25,21 +27,24 @@ PROTEIN_3LETTER_1LETTER_MAP = {
     'TRP': 'W',
     'TYR': 'Y',
     'UNK': 'X',
-}
+    }
 
-PROTEIN_1LETTER_3LETTER_MAP = {v: k for k, v in PROTEIN_3LETTER_1LETTER_MAP.items()}
-PROTEIN_1LETTER_INT_MAP = {aa: i for i, aa in enumerate(PROTEIN_3LETTER_1LETTER_MAP.values())}
-PROTEIN_INT_1LETTER_MAP = {v: k for k, v in PROTEIN_1LETTER_INT_MAP.items()}
+    PROTEIN_1LETTER_3LETTER_MAP = {v: k for k, v in PROTEIN_3LETTER_1LETTER_MAP.items()}
+    PROTEIN_1LETTER_INT_MAP = {aa: i for i, aa in enumerate(PROTEIN_3LETTER_1LETTER_MAP.values())}
+    PROTEIN_INT_1LETTER_MAP = {v: k for k, v in PROTEIN_1LETTER_INT_MAP.items()}
 
-def process_pdb(pdb_path):
-    md_pdb = md.load(pdb_path)
-    return md_pdb
+    def __init__(self, protein_pdb='../P-L/2011-2019/3rvi/3rvi_protein.pdb'):
+        self.pathstr_ = protein_pdb
+        self.protein_frame = md.load(self.pathstr_)
+        
+        # after preprocessing init
+        self.res_coords = None
+        self.res_idents = None
 
-def main():
-    # load protein file and look at atom coordinates
-    protein_frame = process_pdb('../2011-2019/3rvi/3rvi_protein.pdb')
-    print(protein_frame)
+if __name__ == "__main__":
+    pdb = processProtein()
 
+    protein_frame = pdb.protein_frame
     # retain only backbone atoms (ie backbones atoms)
     idx = protein_frame.top.select("is_protein and (name N or name CA or name C or name O)")
     protein_backbones = protein_frame.atom_slice(idx)
@@ -71,17 +76,14 @@ def main():
     res_coords = res_coords * 10
 
     #convert residue names to integers for ML 
-
     # Get the actual residue identities for each atom as an index
-    # (these will be either node types or a particular feature)
     res_names = [res.name for res in protein_backbones.top.residues]
-    res_1letter_names = [PROTEIN_3LETTER_1LETTER_MAP[res] for res in res_names]
-    res_idents = [PROTEIN_1LETTER_INT_MAP[res] for res in res_1letter_names]
-    print(res_idents)
+    res_1letter_names = [pdb.PROTEIN_3LETTER_1LETTER_MAP[res] for res in res_names]
+    res_idents = [pdb.PROTEIN_1LETTER_INT_MAP[res] for res in res_1letter_names]
 
-    print(len(res_idents))
+
+    pdb.res_coords = res_coords
+    pdb.res_idents = res_idents
     # pass in the protein (residue/atoms/coords) with the sequence identities to construct 3D GNN Node features
-    compute_residue_node_features(res_coords, res_idents)
+    compute_residue_node_features(pdb.res_coords, pdb.res_idents)
 
-if __name__ == "__main__":
-     main()
