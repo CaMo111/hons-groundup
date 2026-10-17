@@ -79,7 +79,7 @@ def compute_ligand_node_features(mol):
         feature = atom_features(atom)
         features.append(feature)
 
-    return features
+    return np.asarray(features, dtype=np.float32)
 
 #https://github.com/rachitk/caster-dta/blob/main/utils/create_smiles_features.py    
 def compute_ligand_edge_features(mol):    

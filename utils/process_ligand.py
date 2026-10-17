@@ -22,11 +22,16 @@ class processLigand():
 
         #each ligand has X amount of atoms. We cast this to a 2d Graph of nodes and edges. Nodes represent individual atom features
         # 78 per atom as per graphDTA. we then construct edges which represent the chemical bond between the atoms.
+        
+        #ligand nodes shape= (number_atoms, 78) -> 78 scalar features per ligand atom
         self.mol_nodes = compute_ligand_node_features(self.mol)
+        
+        #ligand edges shape= (198, 198, 9) -> 9 scalar features (bond features) from one atom to another, if no bond then NaN (majority are nan), features length 9 
+        # ie we know bond between atom idx 0 and atom idx 23 therefore mol_edges[1,24] = [1.0,0,0,0,0,0,0,1.0,1.0]
         self.mol_edges = compute_ligand_edge_features(self.mol)
         
 
 if __name__ == "__main__":
     pdb = processLigand()
-    print('ligand nodes', pdb.mol_nodes)
-    print('ligand edges', pdb.mol_edges)
+    print('ligand nodes shape=', pdb.mol_nodes.shape)
+    print('ligand edges shape=', pdb.mol_edges.shape)

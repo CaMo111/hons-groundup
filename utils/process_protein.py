@@ -312,10 +312,14 @@ if __name__ == "__main__":
     pdb.res_idents = res_idents
     # pass in the protein (residue/atoms/coords) with the sequence identities to construct 3D GNN Node features, as well as the specific protein we are dealing with
     # compute and collect node features 
+    # what is the outputted shape? 
+    # a tuple of scalar features then vector features ie (scalar-feats, vector-feats)
+    # where scalar is shape (n-residues, 25), that is 25 1 dimensional scalar features representing physical properties
+    # and vector features shape (n-residues, 3, 3); that is 3, 3 dimensional vectors, the the second index representing which feat and last 3 representing x,y,z
     pdb.nodes = compute_residue_node_features(pdb.res_coords, pdb.res_idents, pdb) 
     
     #print('residuefeaturenodes', pdb.nodes)
-    # edge features split into SCALAR FEATURES then VECTOR FEATURES (both 387x387)
+    # edge features split into SCALAR FEATURES then VECTOR FEATURES
     pdb.edges = compute_residue_edge_features(pdb.res_coords, pdb.res_idents, pdb)
 
     print('protein nodes=', pdb.nodes) 
