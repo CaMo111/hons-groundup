@@ -81,7 +81,8 @@ def compute_ligand_node_features(mol):
 
     return np.asarray(features, dtype=np.float32)
 
-#https://github.com/rachitk/caster-dta/blob/main/utils/create_smiles_features.py    
+#https://github.com/rachitk/caster-dta/blob/main/utils/create_smiles_features.py 
+   
 def compute_ligand_edge_features(mol):    
     no_atoms = mol.GetNumAtoms()
     #print(no_atoms)

@@ -2,7 +2,8 @@ from collections import defaultdict
 import mdtraj as md
 import numpy as np
 import ipdb
-from protein_features import compute_residue_node_features, compute_residue_edge_features
+from utils.protein_features import compute_residue_node_features, compute_residue_edge_features
+from utils.construct_pyg import construct_graph
 
 def normalize_aa_dict(d, X_val=0.0):
     """
@@ -255,7 +256,7 @@ class processProtein():
     AA_POLAR_NEUTRAL = defaultdict(lambda: 0, {aa: 1 for aa in POLAR_NEUTRAL_LIST})
 
 
-    def __init__(self, protein_pdb='../P-L/2011-2019/4b60/4b60_protein.pdb'):
+    def __init__(self, protein_pdb='./P-L/2011-2019/4b60/4b60_protein.pdb'):
         self.pathstr_ = protein_pdb
         self.protein_frame = md.load(self.pathstr_) # frame which has atoms etc.
         
@@ -266,75 +267,111 @@ class processProtein():
         self.edges = None # 3D GNN features for edges 
         self.no_res = None
 
-if __name__ == "__main__":
-    pdb = processProtein()
+        # retain only backbone atoms (ie backbones atoms)
+        idx = self.protein_frame.top.select("is_protein and (name N or name CA or name C or name O)")
+        protein_backbones = self.protein_frame.atom_slice(idx)
 
-    protein_frame = pdb.protein_frame
-    # retain only backbone atoms (ie backbones atoms)
-    idx = protein_frame.top.select("is_protein and (name N or name CA or name C or name O)")
-    protein_backbones = protein_frame.atom_slice(idx)
+        # if protein has more than one frame (this often results from multiple conformers being deposited, but generally conformers
+        # are very similar to one another - so a consistent approach works best here)
+        if protein_backbones.n_frames > 1:
+            protein_backbones = protein_backbones[0]
 
-    # if protein has more than one frame (this often results from multiple conformers being deposited, but generally conformers
-    # are very similar to one another - so a consistent approach works best here)
-    if protein_backbones.n_frames > 1:
-        protein_backbones = protein_backbones[0]
+        self.protein_frame = protein_backbones
 
-    pdb.protein_frame = protein_backbones
+        # if first and last residues dont have all 4 atoms in (N, CA, C, O) then clip them off
+        n_atoms = self.protein_frame.n_atoms
+        atoms = [atom.name for atom in self.protein_frame.top.atoms]
+        atom_concat = ''.join(atoms)
+        expected='NCACO'
+        first_ind = atom_concat.find(expected)
+        last_ind = atom_concat[::-1].find(expected[::-1])
+        self.protein_frame = self.protein_frame.atom_slice(range(first_ind, n_atoms-last_ind))
 
-    # if first and last residues dont have all 4 atoms in (N, CA, C, O) then clip them off
-    n_atoms = protein_backbones.n_atoms
-    atoms = [atom.name for atom in protein_backbones.top.atoms]
-    atom_concat = ''.join(atoms)
-    expected='NCACO'
-    first_ind = atom_concat.find(expected)
-    last_ind = atom_concat[::-1].find(expected[::-1])
-    protein_backbones = protein_backbones.atom_slice(range(first_ind, n_atoms-last_ind))
+        # get number of residues in protein and corresponding coordinates
+        # (n_residues, n_atoms_per_residue, 3))
+        # THE IDEA IS THAT WE HAVE A STRUCTURE WHERE WE CAN ACCESS RESIDUE -> ATOM -> COORDINATES
+        # IE RES_COORDS[0] = FIRST RESIDUE, RES_COORDS[0][0] = THE X,Y,Z COORDINATE OF THE FIRST ATOM OF THE RESIDUE
+        atom_coords = self.protein_frame.xyz
+        n_residues = self.protein_frame.top.n_residues
+        res_coords = atom_coords.reshape(n_residues,4,3)
 
-    # get number of residues in protein and corresponding coordinates
-    # (n_residues, n_atoms_per_residue, 3))
-    # THE IDEA IS THAT WE HAVE A STRUCTURE WHERE WE CAN ACCESS RESIDUE -> ATOM -> COORDINATES
-    # IE RES_COORDS[0] = FIRST RESIDUE, RES_COORDS[0][0] = THE X,Y,Z COORDINATE OF THE FIRST ATOM OF THE RESIDUE
-    atom_coords = protein_backbones.xyz
-    n_residues = protein_backbones.top.n_residues
-    res_coords = atom_coords.reshape(n_residues,4,3)
+        #cast to angstrom, since we calculate within 3-4 angstrom for features
+        res_coords = res_coords * 10
 
-    #cast to angstrom, since we calculate within 3-4 angstrom for features
-    res_coords = res_coords * 10
-
-    #convert residue names to integers for ML 
-    # Get the actual residue identities for each atom as an index
-    res_names = [res.name for res in protein_backbones.top.residues]
-    res_1letter_names = [pdb.PROTEIN_3LETTER_1LETTER_MAP[res] for res in res_names]
-    res_idents = [pdb.PROTEIN_1LETTER_INT_MAP[res] for res in res_1letter_names]
+        #convert residue names to integers for ML 
+        # Get the actual residue identities for each atom as an index
+        res_names = [res.name for res in protein_backbones.top.residues]
+        res_1letter_names = [self.PROTEIN_3LETTER_1LETTER_MAP[res] for res in res_names]
+        res_idents = [self.PROTEIN_1LETTER_INT_MAP[res] for res in res_1letter_names]
 
 
-    pdb.res_coords = res_coords
-    pdb.res_idents = res_idents
-    # pass in the protein (residue/atoms/coords) with the sequence identities to construct 3D GNN Node features, as well as the specific protein we are dealing with
-    # compute and collect node features 
-    # what is the outputted shape? 
-    # a tuple of scalar features then vector features ie (scalar-feats, vector-feats)
-    # where scalar is shape (n-residues, 25), that is 25 1 dimensional scalar features representing physical properties
-    # and vector features shape (n-residues, 3, 3); that is 3, 3 dimensional vectors, the the second index representing which feat and last 3 representing x,y,z
-    pdb.nodes = compute_residue_node_features(pdb.res_coords, pdb.res_idents, pdb) 
+        self.res_coords = res_coords
+        self.res_idents = res_idents
+        # pass in the protein (residue/atoms/coords) with the sequence identities to construct 3D GNN Node features, as well as the specific protein we are dealing with
+        # compute and collect node features 
+        # what is the outputted shape? 
+        # a tuple of scalar features then vector features ie (scalar-feats, vector-feats)
+        # where scalar is shape (n-residues, 25), that is 25 1 dimensional scalar features representing physical properties
+        # and vector features shape (n-residues, 3, 3); that is 3, 3 dimensional vectors, the the second index representing which feat and last 3 representing x,y,z
+        self.nodes = compute_residue_node_features(self.res_coords, self.res_idents, self) 
+        
+        #print('residuefeaturenodes', pdb.nodes)
+        # edge features split into SCALAR FEATURES then VECTOR FEATURES
+        self.edges = compute_residue_edge_features(self.res_coords, self.res_idents, self)
+        self.graph = construct_graph(self.nodes, self.edges)
+
+    # protein_frame = pdb.protein_frame
+    # # retain only backbone atoms (ie backbones atoms)
+    # idx = protein_frame.top.select("is_protein and (name N or name CA or name C or name O)")
+    # protein_backbones = protein_frame.atom_slice(idx)
+
+    # # if protein has more than one frame (this often results from multiple conformers being deposited, but generally conformers
+    # # are very similar to one another - so a consistent approach works best here)
+    # if protein_backbones.n_frames > 1:
+    #     protein_backbones = protein_backbones[0]
+
+    # pdb.protein_frame = protein_backbones
+
+    # # if first and last residues dont have all 4 atoms in (N, CA, C, O) then clip them off
+    # n_atoms = protein_backbones.n_atoms
+    # atoms = [atom.name for atom in protein_backbones.top.atoms]
+    # atom_concat = ''.join(atoms)
+    # expected='NCACO'
+    # first_ind = atom_concat.find(expected)
+    # last_ind = atom_concat[::-1].find(expected[::-1])
+    # protein_backbones = protein_backbones.atom_slice(range(first_ind, n_atoms-last_ind))
+
+    # # get number of residues in protein and corresponding coordinates
+    # # (n_residues, n_atoms_per_residue, 3))
+    # # THE IDEA IS THAT WE HAVE A STRUCTURE WHERE WE CAN ACCESS RESIDUE -> ATOM -> COORDINATES
+    # # IE RES_COORDS[0] = FIRST RESIDUE, RES_COORDS[0][0] = THE X,Y,Z COORDINATE OF THE FIRST ATOM OF THE RESIDUE
+    # atom_coords = protein_backbones.xyz
+    # n_residues = protein_backbones.top.n_residues
+    # res_coords = atom_coords.reshape(n_residues,4,3)
+
+    # #cast to angstrom, since we calculate within 3-4 angstrom for features
+    # res_coords = res_coords * 10
+
+    # #convert residue names to integers for ML 
+    # # Get the actual residue identities for each atom as an index
+    # res_names = [res.name for res in protein_backbones.top.residues]
+    # res_1letter_names = [pdb.PROTEIN_3LETTER_1LETTER_MAP[res] for res in res_names]
+    # res_idents = [pdb.PROTEIN_1LETTER_INT_MAP[res] for res in res_1letter_names]
+
+
+    # pdb.res_coords = res_coords
+    # pdb.res_idents = res_idents
+    # # pass in the protein (residue/atoms/coords) with the sequence identities to construct 3D GNN Node features, as well as the specific protein we are dealing with
+    # # compute and collect node features 
+    # # what is the outputted shape? 
+    # # a tuple of scalar features then vector features ie (scalar-feats, vector-feats)
+    # # where scalar is shape (n-residues, 25), that is 25 1 dimensional scalar features representing physical properties
+    # # and vector features shape (n-residues, 3, 3); that is 3, 3 dimensional vectors, the the second index representing which feat and last 3 representing x,y,z
+    # pdb.nodes = compute_residue_node_features(pdb.res_coords, pdb.res_idents, pdb) 
     
-    #print('residuefeaturenodes', pdb.nodes)
-    # edge features split into SCALAR FEATURES then VECTOR FEATURES
-    pdb.edges = compute_residue_edge_features(pdb.res_coords, pdb.res_idents, pdb)
+    # #print('residuefeaturenodes', pdb.nodes)
+    # # edge features split into SCALAR FEATURES then VECTOR FEATURES
+    # pdb.edges = compute_residue_edge_features(pdb.res_coords, pdb.res_idents, pdb)
 
-    print('protein nodes=', pdb.nodes) 
-    print('protein edges=', pdb.edges)
-
-    #total_nans = np.isnan(pdb.edges[0]).sum() + np.isnan(pdb.edges[1]).sum()
-    #total_values = pdb.edges[0].size + pdb.edges[1].size
-    #fraction_all_nans = total_nans / total_values
-
-    #print(f"Edge Features: {total_nans}")
-    #print(f"Total NaNs: {total_nans}")
-    #print(f"Total Values: {total_values}")
-    #print(f"Overall Fraction: {fraction_all_nans:.6f} ({fraction_all_nans * 100:.2f}%)")
-
-    #print(pdb.edges[0][0][1])
-    #print(pdb.edges[1][0][1][0])
-
-    #print('protein edge features:', pdb.edges)
+    # pdb.graph = construct_graph(pdb.nodes, pdb.edges)
+    # print('graph=', pdb.graph.x.shape)

@@ -7,11 +7,12 @@ from rdkit.Chem.rdchem import BondType
 from rdkit.Chem import ChemicalFeatures
 from rdkit import RDConfig
 import torch
-from ligand_features import compute_ligand_edge_features, compute_ligand_node_features 
+from utils.ligand_features import compute_ligand_edge_features, compute_ligand_node_features 
+from utils.construct_pyg import construct_graph
 
 class processLigand():
 
-    def __init__(self, lignad_pdb='../P-L/2011-2019/4b60/4b60_ligand.mol2', isSmileStringInput=False):
+    def __init__(self, lignad_pdb='./P-L/2011-2019/4b60/4b60_ligand.mol2', isSmileStringInput=False):
         self.pathstr_ = lignad_pdb
         print('init molecule')
         if isSmileStringInput:
@@ -29,9 +30,4 @@ class processLigand():
         #ligand edges shape= (198, 198, 9) -> 9 scalar features (bond features) from one atom to another, if no bond then NaN (majority are nan), features length 9 
         # ie we know bond between atom idx 0 and atom idx 23 therefore mol_edges[1,24] = [1.0,0,0,0,0,0,0,1.0,1.0]
         self.mol_edges = compute_ligand_edge_features(self.mol)
-        
-
-if __name__ == "__main__":
-    pdb = processLigand()
-    print('ligand nodes shape=', pdb.mol_nodes.shape)
-    print('ligand edges shape=', pdb.mol_edges.shape)
+        self.graph = construct_graph(self.mol_nodes, self.mol_edges)
