@@ -3,6 +3,8 @@ import torch
 import scipy.spatial.distance as sp_dist
 import ipdb
 from collections import defaultdict
+from rdkit import RDLogger
+RDLogger.DisableLog('rdApp.warning') # remove the implicit valence warning
 
 def map_intdict_to_onehot(in_dict, add_other=False):
     """

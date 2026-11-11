@@ -128,7 +128,7 @@ def compute_residue_edge_features(res_coords, res_idents, protein):
     res_indexs = np.arange(len(res_idents))
     res_index_diffs = res_indexs[np.newaxis, :] - res_indexs[:, np.newaxis]
     edgePosEncFeats = calc_pos_encoding(res_index_diffs, n_embeds=16)
-    #edge features before 
+    #edge features before; cut out last 3 indexes of edge features to cast to vector  
     edgeFeatures = np.concatenate([edgeRBFFeats, edgePosEncFeats, edge_direction_vector_feats], axis=-1)
     
     # remove all diagonal (ie self <-> info); if we NaN it out it will drop later.

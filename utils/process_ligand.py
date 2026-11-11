@@ -12,8 +12,8 @@ from utils.construct_pyg import construct_graph
 
 class processLigand():
 
-    def __init__(self, lignad_pdb='./P-L/2011-2019/4b60/4b60_ligand.mol2', isSmileStringInput=False):
-        self.pathstr_ = lignad_pdb
+    def __init__(self, ligand_pdb='./P-L/2011-2019/4b60/4b60_ligand.mol2', isSmileStringInput=False):
+        self.pathstr_ = ligand_pdb
         print('init molecule')
         if isSmileStringInput:
             raise ValueError(f"CURRENTLY CASTING MOL2 -> RDKIT MOL, FOR ACTUAL IMPLEMENTATION MUST BE ABLE TO PARSE SMILE STR")
