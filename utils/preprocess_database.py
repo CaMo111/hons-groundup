@@ -21,6 +21,11 @@ def preprocess_database(dict_, database_dir, save_path):
     # only preprocess all features if not globally done alr
     # then can use dataloader 
     if not os.path.exists(save_path):
+        print('save path does not exist' )
+    else:
+        print('save path does exist: ', save_path)
+
+    if not os.path.exists(save_path):
         aff_dict = dict_
         dataset = []
         base_path = Path(database_dir)
