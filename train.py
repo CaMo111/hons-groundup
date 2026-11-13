@@ -42,7 +42,7 @@ def main():
 
     train_loader = DataLoader(
         dataset, 
-        batch_size=4, 
+        batch_size=32, 
         shuffle=True, 
         num_workers=2,         
         persistent_workers=True
@@ -74,19 +74,19 @@ def main():
             optimiser.zero_grad()
 
             pred = model.forward(ligand_b, protein_b)
-            print('PREDICTION =', pred)
-            print('TRUTH = ', y)
+            #print('PREDICTION =', pred)
+            #print('TRUTH = ', y)
             #print('predicted output =', pred)
             #loss_ = loss(pred, y)
             loss_ = loss(pred, y.squeeze(-1))
-            print('LOSS =', loss_)
+            #print('LOSS =', loss_)
 
             loss_.backward()
             optimiser.step()
 
             total_loss += loss_.item()
 
-            if (step + 1) % 1000 == 0:
+            if (step + 1) % 100 == 0:
                 print(f"Epoch [{epoch+1}/{num_epochs}] | Step [{step+1}/{len(train_loader)}] | Loss: {loss_.item():.4f}")
 
         avg_loss = total_loss / len(train_loader)
