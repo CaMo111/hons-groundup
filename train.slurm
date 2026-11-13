@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=processdatabase
 #SBATCH --array=1
-#SBATCH --time=00:10:00               # Max runtime (HH:MM:SS) - adjust if Minion takes longer
+#SBATCH --time=00:20:00               # Max runtime (HH:MM:SS) - adjust if Minion takes longer
 #SBATCH --mem=4G                       # RAM per job
 #SBATCH --cpus-per-task=1
 #SBATCH --partition=gpu
@@ -14,4 +14,4 @@ mkdir -p logs
 
 source .venv/bin/activate
 
-python ./train.py  
+python -u ./train.py  

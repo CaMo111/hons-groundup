@@ -37,7 +37,7 @@ class AffinityLock(nn.Module):
         ligand_pool = global_mean_pool(ligand_nodes, batch_lig)
 
         #USE ONLY SCALAR FEATURES FROM PROTEIN (AS WE ALSO HAVE VEC FEATURES BUT NOT IMPLEMENTED 3D YET)
-        protein_nodes = protein_nodes[0]
+        #protein_nodes = protein_nodes[0]
         protein_nodes = self.prot_proj(protein_nodes)
         protein_nodes = self.protconv1(protein_nodes, protein_edges, batch_prot)
         protein_nodes = self.protconv2(protein_nodes, protein_edges, batch_prot)

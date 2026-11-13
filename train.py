@@ -27,6 +27,9 @@ class IndividualPTDataset(Dataset):
     def __getitem__(self, idx):
         # Loads single dictionary object on demand
         obj = torch.load(self.file_paths[idx], weights_only=False)
+        if isinstance(obj['protein'].x, (tuple, list)):
+            obj['protein'].x = obj['protein'].x[0]
+        obj['protein'].num_nodes = obj['protein'].x.size(0)
         return obj
 
 def main():
@@ -46,8 +49,9 @@ def main():
     )
 
     ligand_dim = dataset[0]['ligand'].x.shape[1]
-    protein_xscalar, protein_xvec = dataset[0]['protein'].x
-    protein_dim = protein_xscalar.shape[1]
+    # BELOW IS UPDATED TO BE HANDLED IN THE DATASET CLASS ABOVE
+    #protein_xscalar, protein_xvec = dataset[0]['protein'].x
+    protein_dim = dataset[0]['protein'].x.shape[1]
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
@@ -70,8 +74,12 @@ def main():
             optimiser.zero_grad()
 
             pred = model.forward(ligand_b, protein_b)
-            print('predicted output =', pred)
-            loss_ = loss(pred, y)
+            print('PREDICTION =', pred)
+            print('TRUTH = ', y)
+            #print('predicted output =', pred)
+            #loss_ = loss(pred, y)
+            loss_ = loss(pred, y.squeeze(-1))
+            print('LOSS =', loss_)
 
             loss_.backward()
             optimiser.step()
