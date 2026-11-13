@@ -1,0 +1,33 @@
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:431: UserWarning: This DataLoader will create 2 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:437: UserWarning: This DataLoader will create 2 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch_geometric/data/data.py:187: UserWarning: Unable to accurately infer 'num_nodes' from the attribute set '{'edge_index', 'edge_attr', 'x'}'. Please explicitly set 'num_nodes' as an attribute of 'data' to suppress this warning
+  return sum([v.num_nodes for v in self.node_stores])
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch_geometric/data/data.py:187: UserWarning: Unable to accurately infer 'num_nodes' from the attribute set '{'edge_index', 'edge_attr', 'x'}'. Please explicitly set 'num_nodes' as an attribute of 'data' to suppress this warning
+  return sum([v.num_nodes for v in self.node_stores])
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch_geometric/data/collate.py:142: UserWarning: Unable to accurately infer 'num_nodes' from the attribute set '{'edge_index', 'edge_attr', 'x'}'. Please explicitly set 'num_nodes' as an attribute of 'data' to suppress this warning
+  repeats = [store.num_nodes or 0 for store in stores]
+/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch_geometric/data/collate.py:142: UserWarning: Unable to accurately infer 'num_nodes' from the attribute set '{'edge_index', 'edge_attr', 'x'}'. Please explicitly set 'num_nodes' as an attribute of 'data' to suppress this warning
+  repeats = [store.num_nodes or 0 for store in stores]
+Traceback (most recent call last):
+  File "/fs04/scratch2/bi46/ncul0003/hons-groundup/./train.py", line 90, in <module>
+    main()
+  File "/fs04/scratch2/bi46/ncul0003/hons-groundup/./train.py", line 72, in main
+    pred = model.forward(ligand_b, protein_b)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs04/scratch2/bi46/ncul0003/hons-groundup/models/model.py", line 34, in forward
+    ligand_nodes = self.lig_proj(ligand_nodes)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs04/scratch2/bi46/ncul0003/hons-groundup/.venv/lib/python3.11/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but got mat1 is on cuda:0, different from other tensors on cpu (when checking argument in method wrapper_CUDA_addmm)

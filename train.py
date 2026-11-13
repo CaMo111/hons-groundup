@@ -52,7 +52,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
-    model = AffinityLock(ligand_dim, protein_dim)
+    model = AffinityLock(ligand_dim, protein_dim).to(device)
     loss = torch.nn.MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=0.001)
 

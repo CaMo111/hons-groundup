@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=processdatabase
 #SBATCH --array=1
-#SBATCH --time=00:30:00               # Max runtime (HH:MM:SS) - adjust if Minion takes longer
-#SBATCH --mem=8G                       # RAM per job
+#SBATCH --time=00:10:00               # Max runtime (HH:MM:SS) - adjust if Minion takes longer
+#SBATCH --mem=4G                       # RAM per job
 #SBATCH --cpus-per-task=1
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
