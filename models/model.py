@@ -8,14 +8,16 @@ class AffinityLock(nn.Module):
         #https://github.com/pyg-team/pytorch_geometric/blob/master/examples/graph_gps.py
         super().__init__()
 
+        # ligand dimension is typically much smaller than protien, idea here is the first layer is that this 
+        # layer takes as input features and cast them to a length 64 (hidden dim) tensor
         self.lig_proj = nn.Linear(ligand_dim, hidden_dim)
         self.prot_proj = nn.Linear(protein_dim, hidden_dim)
         
-        #ligand encoder
+        # GCN conv is graph convolutional network that conducts message passing to features,
+        # its wrapped in GPS Conv which runs gcn conv in parallel with a global attention mechanism
         self.ligconv1 = GPSConv(hidden_dim, GCNConv(hidden_dim, hidden_dim)) 
         self.ligconv2 = GPSConv(hidden_dim, GCNConv(hidden_dim, hidden_dim)) 
 
-        #protein encoder 
         self.protconv1 = GPSConv(hidden_dim, GCNConv(hidden_dim, hidden_dim))  
         self.protconv2 = GPSConv(hidden_dim, GCNConv(hidden_dim, hidden_dim))
 
@@ -42,6 +44,8 @@ class AffinityLock(nn.Module):
         protein_pool = global_mean_pool(protein_nodes, batch_prot)
 
 
+        # global mean pool just gets the global average of all features that will be used to compare to loss.
+    
         combined = torch.cat([ligand_pool, protein_pool], dim=1)
         pred = self.layers(combined)
         return pred.squeeze(-1)
