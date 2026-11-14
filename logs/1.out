@@ -1,0 +1,603 @@
+Passing Indexes to Create Scaled Affinity Score 0~ - 15
+Found 18583 preprocessed .pt files.
+Using device: cuda
+Epoch [1/100] | Step [100/581] | Loss: 4.8745
+Epoch [1/100] | Step [200/581] | Loss: 3.6293
+Epoch [1/100] | Step [300/581] | Loss: 4.4244
+Epoch [1/100] | Step [400/581] | Loss: 2.3155
+Epoch [1/100] | Step [500/581] | Loss: 3.3521
+--- Epoch [1/100] Complete | Avg Loss: 4.7710 ---
+Epoch [2/100] | Step [100/581] | Loss: 2.9203
+Epoch [2/100] | Step [200/581] | Loss: 2.4664
+Epoch [2/100] | Step [300/581] | Loss: 4.2059
+Epoch [2/100] | Step [400/581] | Loss: 2.5035
+Epoch [2/100] | Step [500/581] | Loss: 2.8050
+--- Epoch [2/100] Complete | Avg Loss: 2.7655 ---
+Epoch [3/100] | Step [100/581] | Loss: 3.6585
+Epoch [3/100] | Step [200/581] | Loss: 1.9872
+Epoch [3/100] | Step [300/581] | Loss: 1.8744
+Epoch [3/100] | Step [400/581] | Loss: 2.2308
+Epoch [3/100] | Step [500/581] | Loss: 3.1852
+--- Epoch [3/100] Complete | Avg Loss: 2.6745 ---
+Epoch [4/100] | Step [100/581] | Loss: 2.5101
+Epoch [4/100] | Step [200/581] | Loss: 1.9973
+Epoch [4/100] | Step [300/581] | Loss: 2.6053
+Epoch [4/100] | Step [400/581] | Loss: 2.6816
+Epoch [4/100] | Step [500/581] | Loss: 1.8818
+--- Epoch [4/100] Complete | Avg Loss: 2.5926 ---
+Epoch [5/100] | Step [100/581] | Loss: 2.7152
+Epoch [5/100] | Step [200/581] | Loss: 2.5034
+Epoch [5/100] | Step [300/581] | Loss: 2.0374
+Epoch [5/100] | Step [400/581] | Loss: 2.0126
+Epoch [5/100] | Step [500/581] | Loss: 1.5642
+--- Epoch [5/100] Complete | Avg Loss: 2.5531 ---
+Epoch [6/100] | Step [100/581] | Loss: 3.2102
+Epoch [6/100] | Step [200/581] | Loss: 2.8361
+Epoch [6/100] | Step [300/581] | Loss: 1.8004
+Epoch [6/100] | Step [400/581] | Loss: 1.9721
+Epoch [6/100] | Step [500/581] | Loss: 3.4829
+--- Epoch [6/100] Complete | Avg Loss: 2.5082 ---
+Epoch [7/100] | Step [100/581] | Loss: 3.1435
+Epoch [7/100] | Step [200/581] | Loss: 2.1439
+Epoch [7/100] | Step [300/581] | Loss: 2.3204
+Epoch [7/100] | Step [400/581] | Loss: 2.8504
+Epoch [7/100] | Step [500/581] | Loss: 1.9799
+--- Epoch [7/100] Complete | Avg Loss: 2.4575 ---
+Epoch [8/100] | Step [100/581] | Loss: 2.1821
+Epoch [8/100] | Step [200/581] | Loss: 4.5477
+Epoch [8/100] | Step [300/581] | Loss: 2.2172
+Epoch [8/100] | Step [400/581] | Loss: 4.4762
+Epoch [8/100] | Step [500/581] | Loss: 3.3040
+--- Epoch [8/100] Complete | Avg Loss: 2.4271 ---
+Epoch [9/100] | Step [100/581] | Loss: 3.0129
+Epoch [9/100] | Step [200/581] | Loss: 2.4145
+Epoch [9/100] | Step [300/581] | Loss: 2.6593
+Epoch [9/100] | Step [400/581] | Loss: 2.4801
+Epoch [9/100] | Step [500/581] | Loss: 1.5040
+--- Epoch [9/100] Complete | Avg Loss: 2.3863 ---
+Epoch [10/100] | Step [100/581] | Loss: 1.6010
+Epoch [10/100] | Step [200/581] | Loss: 2.8464
+Epoch [10/100] | Step [300/581] | Loss: 2.7096
+Epoch [10/100] | Step [400/581] | Loss: 2.3476
+Epoch [10/100] | Step [500/581] | Loss: 4.5621
+--- Epoch [10/100] Complete | Avg Loss: 2.3513 ---
+Epoch [11/100] | Step [100/581] | Loss: 3.0511
+Epoch [11/100] | Step [200/581] | Loss: 2.5582
+Epoch [11/100] | Step [300/581] | Loss: 1.8800
+Epoch [11/100] | Step [400/581] | Loss: 2.0148
+Epoch [11/100] | Step [500/581] | Loss: 2.1581
+--- Epoch [11/100] Complete | Avg Loss: 2.3105 ---
+Epoch [12/100] | Step [100/581] | Loss: 3.1871
+Epoch [12/100] | Step [200/581] | Loss: 2.7552
+Epoch [12/100] | Step [300/581] | Loss: 2.6789
+Epoch [12/100] | Step [400/581] | Loss: 1.4648
+Epoch [12/100] | Step [500/581] | Loss: 1.6634
+--- Epoch [12/100] Complete | Avg Loss: 2.3022 ---
+Epoch [13/100] | Step [100/581] | Loss: 2.4677
+Epoch [13/100] | Step [200/581] | Loss: 2.3571
+Epoch [13/100] | Step [300/581] | Loss: 2.6279
+Epoch [13/100] | Step [400/581] | Loss: 2.8194
+Epoch [13/100] | Step [500/581] | Loss: 4.0608
+--- Epoch [13/100] Complete | Avg Loss: 2.2765 ---
+Epoch [14/100] | Step [100/581] | Loss: 1.7162
+Epoch [14/100] | Step [200/581] | Loss: 1.9248
+Epoch [14/100] | Step [300/581] | Loss: 2.1367
+Epoch [14/100] | Step [400/581] | Loss: 1.5745
+Epoch [14/100] | Step [500/581] | Loss: 4.6501
+--- Epoch [14/100] Complete | Avg Loss: 2.2614 ---
+Epoch [15/100] | Step [100/581] | Loss: 2.4933
+Epoch [15/100] | Step [200/581] | Loss: 2.4145
+Epoch [15/100] | Step [300/581] | Loss: 1.8668
+Epoch [15/100] | Step [400/581] | Loss: 1.6934
+Epoch [15/100] | Step [500/581] | Loss: 3.7676
+--- Epoch [15/100] Complete | Avg Loss: 2.2437 ---
+Epoch [16/100] | Step [100/581] | Loss: 2.5937
+Epoch [16/100] | Step [200/581] | Loss: 2.8616
+Epoch [16/100] | Step [300/581] | Loss: 2.2581
+Epoch [16/100] | Step [400/581] | Loss: 1.7446
+Epoch [16/100] | Step [500/581] | Loss: 1.7559
+--- Epoch [16/100] Complete | Avg Loss: 2.2143 ---
+Epoch [17/100] | Step [100/581] | Loss: 2.4701
+Epoch [17/100] | Step [200/581] | Loss: 2.9484
+Epoch [17/100] | Step [300/581] | Loss: 1.2365
+Epoch [17/100] | Step [400/581] | Loss: 3.7323
+Epoch [17/100] | Step [500/581] | Loss: 2.1976
+--- Epoch [17/100] Complete | Avg Loss: 2.2213 ---
+Epoch [18/100] | Step [100/581] | Loss: 3.1511
+Epoch [18/100] | Step [200/581] | Loss: 1.6890
+Epoch [18/100] | Step [300/581] | Loss: 2.2437
+Epoch [18/100] | Step [400/581] | Loss: 1.2715
+Epoch [18/100] | Step [500/581] | Loss: 2.7053
+--- Epoch [18/100] Complete | Avg Loss: 2.1642 ---
+Epoch [19/100] | Step [100/581] | Loss: 2.1649
+Epoch [19/100] | Step [200/581] | Loss: 1.8504
+Epoch [19/100] | Step [300/581] | Loss: 1.9512
+Epoch [19/100] | Step [400/581] | Loss: 3.7690
+Epoch [19/100] | Step [500/581] | Loss: 1.9901
+--- Epoch [19/100] Complete | Avg Loss: 2.1562 ---
+Epoch [20/100] | Step [100/581] | Loss: 2.5664
+Epoch [20/100] | Step [200/581] | Loss: 2.4705
+Epoch [20/100] | Step [300/581] | Loss: 2.5000
+Epoch [20/100] | Step [400/581] | Loss: 4.4159
+Epoch [20/100] | Step [500/581] | Loss: 1.3614
+--- Epoch [20/100] Complete | Avg Loss: 2.1515 ---
+Epoch [21/100] | Step [100/581] | Loss: 1.1417
+Epoch [21/100] | Step [200/581] | Loss: 2.0196
+Epoch [21/100] | Step [300/581] | Loss: 1.8846
+Epoch [21/100] | Step [400/581] | Loss: 3.5821
+Epoch [21/100] | Step [500/581] | Loss: 1.8830
+--- Epoch [21/100] Complete | Avg Loss: 2.1181 ---
+Epoch [22/100] | Step [100/581] | Loss: 2.0231
+Epoch [22/100] | Step [200/581] | Loss: 1.7264
+Epoch [22/100] | Step [300/581] | Loss: 2.2392
+Epoch [22/100] | Step [400/581] | Loss: 2.4543
+Epoch [22/100] | Step [500/581] | Loss: 1.8934
+--- Epoch [22/100] Complete | Avg Loss: 2.1097 ---
+Epoch [23/100] | Step [100/581] | Loss: 1.8200
+Epoch [23/100] | Step [200/581] | Loss: 2.8926
+Epoch [23/100] | Step [300/581] | Loss: 1.8525
+Epoch [23/100] | Step [400/581] | Loss: 1.6182
+Epoch [23/100] | Step [500/581] | Loss: 3.6766
+--- Epoch [23/100] Complete | Avg Loss: 2.1109 ---
+Epoch [24/100] | Step [100/581] | Loss: 1.5286
+Epoch [24/100] | Step [200/581] | Loss: 2.7279
+Epoch [24/100] | Step [300/581] | Loss: 1.7891
+Epoch [24/100] | Step [400/581] | Loss: 2.1262
+Epoch [24/100] | Step [500/581] | Loss: 2.9237
+--- Epoch [24/100] Complete | Avg Loss: 2.0945 ---
+Epoch [25/100] | Step [100/581] | Loss: 2.2015
+Epoch [25/100] | Step [200/581] | Loss: 1.6748
+Epoch [25/100] | Step [300/581] | Loss: 1.7720
+Epoch [25/100] | Step [400/581] | Loss: 2.4956
+Epoch [25/100] | Step [500/581] | Loss: 2.6762
+--- Epoch [25/100] Complete | Avg Loss: 2.0862 ---
+Epoch [26/100] | Step [100/581] | Loss: 1.3090
+Epoch [26/100] | Step [200/581] | Loss: 2.1275
+Epoch [26/100] | Step [300/581] | Loss: 3.1202
+Epoch [26/100] | Step [400/581] | Loss: 2.5587
+Epoch [26/100] | Step [500/581] | Loss: 2.4142
+--- Epoch [26/100] Complete | Avg Loss: 2.0486 ---
+Epoch [27/100] | Step [100/581] | Loss: 1.3152
+Epoch [27/100] | Step [200/581] | Loss: 1.7970
+Epoch [27/100] | Step [300/581] | Loss: 1.7904
+Epoch [27/100] | Step [400/581] | Loss: 2.6065
+Epoch [27/100] | Step [500/581] | Loss: 1.8782
+--- Epoch [27/100] Complete | Avg Loss: 2.0119 ---
+Epoch [28/100] | Step [100/581] | Loss: 2.2099
+Epoch [28/100] | Step [200/581] | Loss: 1.7431
+Epoch [28/100] | Step [300/581] | Loss: 3.0587
+Epoch [28/100] | Step [400/581] | Loss: 3.3817
+Epoch [28/100] | Step [500/581] | Loss: 1.5923
+--- Epoch [28/100] Complete | Avg Loss: 2.0203 ---
+Epoch [29/100] | Step [100/581] | Loss: 1.4370
+Epoch [29/100] | Step [200/581] | Loss: 1.5160
+Epoch [29/100] | Step [300/581] | Loss: 2.9708
+Epoch [29/100] | Step [400/581] | Loss: 2.2582
+Epoch [29/100] | Step [500/581] | Loss: 2.0538
+--- Epoch [29/100] Complete | Avg Loss: 2.0235 ---
+Epoch [30/100] | Step [100/581] | Loss: 2.6727
+Epoch [30/100] | Step [200/581] | Loss: 2.9492
+Epoch [30/100] | Step [300/581] | Loss: 1.4393
+Epoch [30/100] | Step [400/581] | Loss: 1.7274
+Epoch [30/100] | Step [500/581] | Loss: 1.9209
+--- Epoch [30/100] Complete | Avg Loss: 2.0022 ---
+Epoch [31/100] | Step [100/581] | Loss: 1.3446
+Epoch [31/100] | Step [200/581] | Loss: 2.4991
+Epoch [31/100] | Step [300/581] | Loss: 1.5628
+Epoch [31/100] | Step [400/581] | Loss: 2.5465
+Epoch [31/100] | Step [500/581] | Loss: 2.3959
+--- Epoch [31/100] Complete | Avg Loss: 1.9849 ---
+Epoch [32/100] | Step [100/581] | Loss: 1.5939
+Epoch [32/100] | Step [200/581] | Loss: 2.0141
+Epoch [32/100] | Step [300/581] | Loss: 1.8513
+Epoch [32/100] | Step [400/581] | Loss: 2.2844
+Epoch [32/100] | Step [500/581] | Loss: 1.9176
+--- Epoch [32/100] Complete | Avg Loss: 1.9644 ---
+Epoch [33/100] | Step [100/581] | Loss: 1.9266
+Epoch [33/100] | Step [200/581] | Loss: 1.1739
+Epoch [33/100] | Step [300/581] | Loss: 1.8676
+Epoch [33/100] | Step [400/581] | Loss: 1.6322
+Epoch [33/100] | Step [500/581] | Loss: 1.9255
+--- Epoch [33/100] Complete | Avg Loss: 1.9376 ---
+Epoch [34/100] | Step [100/581] | Loss: 2.4435
+Epoch [34/100] | Step [200/581] | Loss: 1.6079
+Epoch [34/100] | Step [300/581] | Loss: 1.7840
+Epoch [34/100] | Step [400/581] | Loss: 2.9957
+Epoch [34/100] | Step [500/581] | Loss: 2.3946
+--- Epoch [34/100] Complete | Avg Loss: 1.9562 ---
+Epoch [35/100] | Step [100/581] | Loss: 2.4474
+Epoch [35/100] | Step [200/581] | Loss: 1.8091
+Epoch [35/100] | Step [300/581] | Loss: 2.6478
+Epoch [35/100] | Step [400/581] | Loss: 1.7149
+Epoch [35/100] | Step [500/581] | Loss: 2.4819
+--- Epoch [35/100] Complete | Avg Loss: 1.9281 ---
+Epoch [36/100] | Step [100/581] | Loss: 2.0514
+Epoch [36/100] | Step [200/581] | Loss: 2.8717
+Epoch [36/100] | Step [300/581] | Loss: 3.9807
+Epoch [36/100] | Step [400/581] | Loss: 1.8650
+Epoch [36/100] | Step [500/581] | Loss: 2.1732
+--- Epoch [36/100] Complete | Avg Loss: 1.9247 ---
+Epoch [37/100] | Step [100/581] | Loss: 1.5899
+Epoch [37/100] | Step [200/581] | Loss: 2.6055
+Epoch [37/100] | Step [300/581] | Loss: 1.0827
+Epoch [37/100] | Step [400/581] | Loss: 1.4493
+Epoch [37/100] | Step [500/581] | Loss: 1.8461
+--- Epoch [37/100] Complete | Avg Loss: 1.9281 ---
+Epoch [38/100] | Step [100/581] | Loss: 1.9089
+Epoch [38/100] | Step [200/581] | Loss: 1.5301
+Epoch [38/100] | Step [300/581] | Loss: 1.8000
+Epoch [38/100] | Step [400/581] | Loss: 1.4283
+Epoch [38/100] | Step [500/581] | Loss: 1.3129
+--- Epoch [38/100] Complete | Avg Loss: 1.9239 ---
+Epoch [39/100] | Step [100/581] | Loss: 1.5368
+Epoch [39/100] | Step [200/581] | Loss: 1.6417
+Epoch [39/100] | Step [300/581] | Loss: 1.5557
+Epoch [39/100] | Step [400/581] | Loss: 1.5974
+Epoch [39/100] | Step [500/581] | Loss: 1.2347
+--- Epoch [39/100] Complete | Avg Loss: 1.9054 ---
+Epoch [40/100] | Step [100/581] | Loss: 1.9202
+Epoch [40/100] | Step [200/581] | Loss: 1.9625
+Epoch [40/100] | Step [300/581] | Loss: 2.0083
+Epoch [40/100] | Step [400/581] | Loss: 1.0617
+Epoch [40/100] | Step [500/581] | Loss: 3.1174
+--- Epoch [40/100] Complete | Avg Loss: 1.9198 ---
+Epoch [41/100] | Step [100/581] | Loss: 2.6933
+Epoch [41/100] | Step [200/581] | Loss: 1.2644
+Epoch [41/100] | Step [300/581] | Loss: 2.4241
+Epoch [41/100] | Step [400/581] | Loss: 1.7596
+Epoch [41/100] | Step [500/581] | Loss: 1.9048
+--- Epoch [41/100] Complete | Avg Loss: 1.8975 ---
+Epoch [42/100] | Step [100/581] | Loss: 3.0755
+Epoch [42/100] | Step [200/581] | Loss: 1.2799
+Epoch [42/100] | Step [300/581] | Loss: 1.8004
+Epoch [42/100] | Step [400/581] | Loss: 1.1201
+Epoch [42/100] | Step [500/581] | Loss: 1.0129
+--- Epoch [42/100] Complete | Avg Loss: 1.8719 ---
+Epoch [43/100] | Step [100/581] | Loss: 1.6135
+Epoch [43/100] | Step [200/581] | Loss: 2.0323
+Epoch [43/100] | Step [300/581] | Loss: 1.5006
+Epoch [43/100] | Step [400/581] | Loss: 1.7528
+Epoch [43/100] | Step [500/581] | Loss: 1.4128
+--- Epoch [43/100] Complete | Avg Loss: 1.8710 ---
+Epoch [44/100] | Step [100/581] | Loss: 1.9155
+Epoch [44/100] | Step [200/581] | Loss: 1.6504
+Epoch [44/100] | Step [300/581] | Loss: 1.7161
+Epoch [44/100] | Step [400/581] | Loss: 0.9250
+Epoch [44/100] | Step [500/581] | Loss: 1.9272
+--- Epoch [44/100] Complete | Avg Loss: 1.8642 ---
+Epoch [45/100] | Step [100/581] | Loss: 1.3381
+Epoch [45/100] | Step [200/581] | Loss: 2.0164
+Epoch [45/100] | Step [300/581] | Loss: 1.4824
+Epoch [45/100] | Step [400/581] | Loss: 1.7668
+Epoch [45/100] | Step [500/581] | Loss: 1.4895
+--- Epoch [45/100] Complete | Avg Loss: 1.8771 ---
+Epoch [46/100] | Step [100/581] | Loss: 1.5424
+Epoch [46/100] | Step [200/581] | Loss: 1.8335
+Epoch [46/100] | Step [300/581] | Loss: 1.2375
+Epoch [46/100] | Step [400/581] | Loss: 2.7314
+Epoch [46/100] | Step [500/581] | Loss: 1.1707
+--- Epoch [46/100] Complete | Avg Loss: 1.8275 ---
+Epoch [47/100] | Step [100/581] | Loss: 0.9462
+Epoch [47/100] | Step [200/581] | Loss: 2.0859
+Epoch [47/100] | Step [300/581] | Loss: 1.2558
+Epoch [47/100] | Step [400/581] | Loss: 2.2144
+Epoch [47/100] | Step [500/581] | Loss: 1.7576
+--- Epoch [47/100] Complete | Avg Loss: 1.8133 ---
+Epoch [48/100] | Step [100/581] | Loss: 4.2473
+Epoch [48/100] | Step [200/581] | Loss: 1.7135
+Epoch [48/100] | Step [300/581] | Loss: 2.5436
+Epoch [48/100] | Step [400/581] | Loss: 2.2551
+Epoch [48/100] | Step [500/581] | Loss: 2.8931
+--- Epoch [48/100] Complete | Avg Loss: 1.8231 ---
+Epoch [49/100] | Step [100/581] | Loss: 2.0106
+Epoch [49/100] | Step [200/581] | Loss: 2.2934
+Epoch [49/100] | Step [300/581] | Loss: 1.5212
+Epoch [49/100] | Step [400/581] | Loss: 1.0749
+Epoch [49/100] | Step [500/581] | Loss: 1.4851
+--- Epoch [49/100] Complete | Avg Loss: 1.8353 ---
+Epoch [50/100] | Step [100/581] | Loss: 2.5881
+Epoch [50/100] | Step [200/581] | Loss: 2.4308
+Epoch [50/100] | Step [300/581] | Loss: 2.1725
+Epoch [50/100] | Step [400/581] | Loss: 1.8199
+Epoch [50/100] | Step [500/581] | Loss: 1.3599
+--- Epoch [50/100] Complete | Avg Loss: 1.7838 ---
+Epoch [51/100] | Step [100/581] | Loss: 1.8049
+Epoch [51/100] | Step [200/581] | Loss: 1.6780
+Epoch [51/100] | Step [300/581] | Loss: 1.1151
+Epoch [51/100] | Step [400/581] | Loss: 1.5806
+Epoch [51/100] | Step [500/581] | Loss: 1.1454
+--- Epoch [51/100] Complete | Avg Loss: 1.7822 ---
+Epoch [52/100] | Step [100/581] | Loss: 1.5643
+Epoch [52/100] | Step [200/581] | Loss: 1.6760
+Epoch [52/100] | Step [300/581] | Loss: 2.6948
+Epoch [52/100] | Step [400/581] | Loss: 1.4639
+Epoch [52/100] | Step [500/581] | Loss: 1.1566
+--- Epoch [52/100] Complete | Avg Loss: 1.7944 ---
+Epoch [53/100] | Step [100/581] | Loss: 1.3560
+Epoch [53/100] | Step [200/581] | Loss: 2.0655
+Epoch [53/100] | Step [300/581] | Loss: 1.6657
+Epoch [53/100] | Step [400/581] | Loss: 1.1860
+Epoch [53/100] | Step [500/581] | Loss: 1.3433
+--- Epoch [53/100] Complete | Avg Loss: 1.7695 ---
+Epoch [54/100] | Step [100/581] | Loss: 1.6620
+Epoch [54/100] | Step [200/581] | Loss: 2.3629
+Epoch [54/100] | Step [300/581] | Loss: 1.6156
+Epoch [54/100] | Step [400/581] | Loss: 1.8734
+Epoch [54/100] | Step [500/581] | Loss: 1.9215
+--- Epoch [54/100] Complete | Avg Loss: 1.7412 ---
+Epoch [55/100] | Step [100/581] | Loss: 1.7018
+Epoch [55/100] | Step [200/581] | Loss: 1.2017
+Epoch [55/100] | Step [300/581] | Loss: 0.8970
+Epoch [55/100] | Step [400/581] | Loss: 1.4862
+Epoch [55/100] | Step [500/581] | Loss: 2.6789
+--- Epoch [55/100] Complete | Avg Loss: 1.7323 ---
+Epoch [56/100] | Step [100/581] | Loss: 2.1546
+Epoch [56/100] | Step [200/581] | Loss: 2.1523
+Epoch [56/100] | Step [300/581] | Loss: 0.8842
+Epoch [56/100] | Step [400/581] | Loss: 2.2370
+Epoch [56/100] | Step [500/581] | Loss: 1.1745
+--- Epoch [56/100] Complete | Avg Loss: 1.7238 ---
+Epoch [57/100] | Step [100/581] | Loss: 1.6158
+Epoch [57/100] | Step [200/581] | Loss: 1.7615
+Epoch [57/100] | Step [300/581] | Loss: 1.1923
+Epoch [57/100] | Step [400/581] | Loss: 1.5761
+Epoch [57/100] | Step [500/581] | Loss: 1.7540
+--- Epoch [57/100] Complete | Avg Loss: 1.7180 ---
+Epoch [58/100] | Step [100/581] | Loss: 1.8593
+Epoch [58/100] | Step [200/581] | Loss: 1.3424
+Epoch [58/100] | Step [300/581] | Loss: 1.7661
+Epoch [58/100] | Step [400/581] | Loss: 0.7938
+Epoch [58/100] | Step [500/581] | Loss: 1.8290
+--- Epoch [58/100] Complete | Avg Loss: 1.7014 ---
+Epoch [59/100] | Step [100/581] | Loss: 2.1111
+Epoch [59/100] | Step [200/581] | Loss: 2.7444
+Epoch [59/100] | Step [300/581] | Loss: 1.7942
+Epoch [59/100] | Step [400/581] | Loss: 1.4735
+Epoch [59/100] | Step [500/581] | Loss: 1.1440
+--- Epoch [59/100] Complete | Avg Loss: 1.6907 ---
+Epoch [60/100] | Step [100/581] | Loss: 1.7441
+Epoch [60/100] | Step [200/581] | Loss: 1.3652
+Epoch [60/100] | Step [300/581] | Loss: 2.2665
+Epoch [60/100] | Step [400/581] | Loss: 1.5580
+Epoch [60/100] | Step [500/581] | Loss: 1.5452
+--- Epoch [60/100] Complete | Avg Loss: 1.6874 ---
+Epoch [61/100] | Step [100/581] | Loss: 2.2286
+Epoch [61/100] | Step [200/581] | Loss: 1.7625
+Epoch [61/100] | Step [300/581] | Loss: 1.7536
+Epoch [61/100] | Step [400/581] | Loss: 1.4309
+Epoch [61/100] | Step [500/581] | Loss: 1.8160
+--- Epoch [61/100] Complete | Avg Loss: 1.6699 ---
+Epoch [62/100] | Step [100/581] | Loss: 1.9686
+Epoch [62/100] | Step [200/581] | Loss: 2.0398
+Epoch [62/100] | Step [300/581] | Loss: 1.4934
+Epoch [62/100] | Step [400/581] | Loss: 2.5063
+Epoch [62/100] | Step [500/581] | Loss: 0.8156
+--- Epoch [62/100] Complete | Avg Loss: 1.6587 ---
+Epoch [63/100] | Step [100/581] | Loss: 0.9229
+Epoch [63/100] | Step [200/581] | Loss: 1.4067
+Epoch [63/100] | Step [300/581] | Loss: 1.7562
+Epoch [63/100] | Step [400/581] | Loss: 2.3687
+Epoch [63/100] | Step [500/581] | Loss: 1.2549
+--- Epoch [63/100] Complete | Avg Loss: 1.6591 ---
+Epoch [64/100] | Step [100/581] | Loss: 1.2385
+Epoch [64/100] | Step [200/581] | Loss: 1.5115
+Epoch [64/100] | Step [300/581] | Loss: 1.7631
+Epoch [64/100] | Step [400/581] | Loss: 1.5026
+Epoch [64/100] | Step [500/581] | Loss: 1.6774
+--- Epoch [64/100] Complete | Avg Loss: 1.6468 ---
+Epoch [65/100] | Step [100/581] | Loss: 1.1839
+Epoch [65/100] | Step [200/581] | Loss: 1.4754
+Epoch [65/100] | Step [300/581] | Loss: 1.9582
+Epoch [65/100] | Step [400/581] | Loss: 2.4070
+Epoch [65/100] | Step [500/581] | Loss: 2.1924
+--- Epoch [65/100] Complete | Avg Loss: 1.6471 ---
+Epoch [66/100] | Step [100/581] | Loss: 2.1032
+Epoch [66/100] | Step [200/581] | Loss: 1.1925
+Epoch [66/100] | Step [300/581] | Loss: 1.4642
+Epoch [66/100] | Step [400/581] | Loss: 1.3621
+Epoch [66/100] | Step [500/581] | Loss: 1.7933
+--- Epoch [66/100] Complete | Avg Loss: 1.6334 ---
+Epoch [67/100] | Step [100/581] | Loss: 0.9525
+Epoch [67/100] | Step [200/581] | Loss: 1.3026
+Epoch [67/100] | Step [300/581] | Loss: 2.6107
+Epoch [67/100] | Step [400/581] | Loss: 1.9083
+Epoch [67/100] | Step [500/581] | Loss: 1.4645
+--- Epoch [67/100] Complete | Avg Loss: 1.6177 ---
+Epoch [68/100] | Step [100/581] | Loss: 1.9720
+Epoch [68/100] | Step [200/581] | Loss: 1.5655
+Epoch [68/100] | Step [300/581] | Loss: 1.8404
+Epoch [68/100] | Step [400/581] | Loss: 2.3530
+Epoch [68/100] | Step [500/581] | Loss: 1.2094
+--- Epoch [68/100] Complete | Avg Loss: 1.6006 ---
+Epoch [69/100] | Step [100/581] | Loss: 1.3556
+Epoch [69/100] | Step [200/581] | Loss: 1.2780
+Epoch [69/100] | Step [300/581] | Loss: 1.2902
+Epoch [69/100] | Step [400/581] | Loss: 0.9059
+Epoch [69/100] | Step [500/581] | Loss: 1.4796
+--- Epoch [69/100] Complete | Avg Loss: 1.6151 ---
+Epoch [70/100] | Step [100/581] | Loss: 1.0658
+Epoch [70/100] | Step [200/581] | Loss: 2.0664
+Epoch [70/100] | Step [300/581] | Loss: 1.2338
+Epoch [70/100] | Step [400/581] | Loss: 1.0302
+Epoch [70/100] | Step [500/581] | Loss: 0.7707
+--- Epoch [70/100] Complete | Avg Loss: 1.5883 ---
+Epoch [71/100] | Step [100/581] | Loss: 1.4095
+Epoch [71/100] | Step [200/581] | Loss: 1.7847
+Epoch [71/100] | Step [300/581] | Loss: 1.0070
+Epoch [71/100] | Step [400/581] | Loss: 1.2116
+Epoch [71/100] | Step [500/581] | Loss: 1.6862
+--- Epoch [71/100] Complete | Avg Loss: 1.5702 ---
+Epoch [72/100] | Step [100/581] | Loss: 1.6089
+Epoch [72/100] | Step [200/581] | Loss: 1.6680
+Epoch [72/100] | Step [300/581] | Loss: 1.2607
+Epoch [72/100] | Step [400/581] | Loss: 1.3571
+Epoch [72/100] | Step [500/581] | Loss: 2.0395
+--- Epoch [72/100] Complete | Avg Loss: 1.5763 ---
+Epoch [73/100] | Step [100/581] | Loss: 1.5142
+Epoch [73/100] | Step [200/581] | Loss: 1.2832
+Epoch [73/100] | Step [300/581] | Loss: 1.0759
+Epoch [73/100] | Step [400/581] | Loss: 1.8555
+Epoch [73/100] | Step [500/581] | Loss: 0.8166
+--- Epoch [73/100] Complete | Avg Loss: 1.5710 ---
+Epoch [74/100] | Step [100/581] | Loss: 1.1812
+Epoch [74/100] | Step [200/581] | Loss: 1.4937
+Epoch [74/100] | Step [300/581] | Loss: 2.2431
+Epoch [74/100] | Step [400/581] | Loss: 1.3733
+Epoch [74/100] | Step [500/581] | Loss: 1.9025
+--- Epoch [74/100] Complete | Avg Loss: 1.5728 ---
+Epoch [75/100] | Step [100/581] | Loss: 2.5324
+Epoch [75/100] | Step [200/581] | Loss: 1.5989
+Epoch [75/100] | Step [300/581] | Loss: 1.3037
+Epoch [75/100] | Step [400/581] | Loss: 1.5078
+Epoch [75/100] | Step [500/581] | Loss: 0.7721
+--- Epoch [75/100] Complete | Avg Loss: 1.5942 ---
+Epoch [76/100] | Step [100/581] | Loss: 1.0158
+Epoch [76/100] | Step [200/581] | Loss: 1.2024
+Epoch [76/100] | Step [300/581] | Loss: 2.4486
+Epoch [76/100] | Step [400/581] | Loss: 2.2199
+Epoch [76/100] | Step [500/581] | Loss: 2.8862
+--- Epoch [76/100] Complete | Avg Loss: 1.5994 ---
+Epoch [77/100] | Step [100/581] | Loss: 1.4491
+Epoch [77/100] | Step [200/581] | Loss: 2.3253
+Epoch [77/100] | Step [300/581] | Loss: 1.6272
+Epoch [77/100] | Step [400/581] | Loss: 1.5089
+Epoch [77/100] | Step [500/581] | Loss: 1.3003
+--- Epoch [77/100] Complete | Avg Loss: 1.5598 ---
+Epoch [78/100] | Step [100/581] | Loss: 2.3661
+Epoch [78/100] | Step [200/581] | Loss: 1.1877
+Epoch [78/100] | Step [300/581] | Loss: 1.3217
+Epoch [78/100] | Step [400/581] | Loss: 1.3284
+Epoch [78/100] | Step [500/581] | Loss: 2.0151
+--- Epoch [78/100] Complete | Avg Loss: 1.5389 ---
+Epoch [79/100] | Step [100/581] | Loss: 1.0324
+Epoch [79/100] | Step [200/581] | Loss: 1.6268
+Epoch [79/100] | Step [300/581] | Loss: 1.4445
+Epoch [79/100] | Step [400/581] | Loss: 1.9128
+Epoch [79/100] | Step [500/581] | Loss: 1.0410
+--- Epoch [79/100] Complete | Avg Loss: 1.5507 ---
+Epoch [80/100] | Step [100/581] | Loss: 1.2705
+Epoch [80/100] | Step [200/581] | Loss: 1.6081
+Epoch [80/100] | Step [300/581] | Loss: 1.3907
+Epoch [80/100] | Step [400/581] | Loss: 1.1788
+Epoch [80/100] | Step [500/581] | Loss: 2.0780
+--- Epoch [80/100] Complete | Avg Loss: 1.5729 ---
+Epoch [81/100] | Step [100/581] | Loss: 1.7242
+Epoch [81/100] | Step [200/581] | Loss: 0.8046
+Epoch [81/100] | Step [300/581] | Loss: 1.2248
+Epoch [81/100] | Step [400/581] | Loss: 1.4042
+Epoch [81/100] | Step [500/581] | Loss: 1.1446
+--- Epoch [81/100] Complete | Avg Loss: 1.6087 ---
+Epoch [82/100] | Step [100/581] | Loss: 1.1621
+Epoch [82/100] | Step [200/581] | Loss: 1.0458
+Epoch [82/100] | Step [300/581] | Loss: 2.8195
+Epoch [82/100] | Step [400/581] | Loss: 1.3275
+Epoch [82/100] | Step [500/581] | Loss: 2.5432
+--- Epoch [82/100] Complete | Avg Loss: 1.5241 ---
+Epoch [83/100] | Step [100/581] | Loss: 0.9277
+Epoch [83/100] | Step [200/581] | Loss: 1.1351
+Epoch [83/100] | Step [300/581] | Loss: 1.2405
+Epoch [83/100] | Step [400/581] | Loss: 1.4219
+Epoch [83/100] | Step [500/581] | Loss: 2.0295
+--- Epoch [83/100] Complete | Avg Loss: 1.5103 ---
+Epoch [84/100] | Step [100/581] | Loss: 1.4045
+Epoch [84/100] | Step [200/581] | Loss: 1.2725
+Epoch [84/100] | Step [300/581] | Loss: 1.4570
+Epoch [84/100] | Step [400/581] | Loss: 1.3130
+Epoch [84/100] | Step [500/581] | Loss: 1.4494
+--- Epoch [84/100] Complete | Avg Loss: 1.4913 ---
+Epoch [85/100] | Step [100/581] | Loss: 1.7347
+Epoch [85/100] | Step [200/581] | Loss: 1.2896
+Epoch [85/100] | Step [300/581] | Loss: 2.3992
+Epoch [85/100] | Step [400/581] | Loss: 1.1922
+Epoch [85/100] | Step [500/581] | Loss: 1.4645
+--- Epoch [85/100] Complete | Avg Loss: 1.5026 ---
+Epoch [86/100] | Step [100/581] | Loss: 1.0032
+Epoch [86/100] | Step [200/581] | Loss: 1.4432
+Epoch [86/100] | Step [300/581] | Loss: 1.6084
+Epoch [86/100] | Step [400/581] | Loss: 1.3848
+Epoch [86/100] | Step [500/581] | Loss: 2.3088
+--- Epoch [86/100] Complete | Avg Loss: 1.4943 ---
+Epoch [87/100] | Step [100/581] | Loss: 1.4933
+Epoch [87/100] | Step [200/581] | Loss: 1.1827
+Epoch [87/100] | Step [300/581] | Loss: 1.3183
+Epoch [87/100] | Step [400/581] | Loss: 1.6928
+Epoch [87/100] | Step [500/581] | Loss: 1.9757
+--- Epoch [87/100] Complete | Avg Loss: 1.5041 ---
+Epoch [88/100] | Step [100/581] | Loss: 0.9690
+Epoch [88/100] | Step [200/581] | Loss: 2.0249
+Epoch [88/100] | Step [300/581] | Loss: 1.4667
+Epoch [88/100] | Step [400/581] | Loss: 0.9618
+Epoch [88/100] | Step [500/581] | Loss: 1.8452
+--- Epoch [88/100] Complete | Avg Loss: 1.4837 ---
+Epoch [89/100] | Step [100/581] | Loss: 0.9081
+Epoch [89/100] | Step [200/581] | Loss: 1.2540
+Epoch [89/100] | Step [300/581] | Loss: 1.5163
+Epoch [89/100] | Step [400/581] | Loss: 0.8333
+Epoch [89/100] | Step [500/581] | Loss: 1.1886
+--- Epoch [89/100] Complete | Avg Loss: 1.4630 ---
+Epoch [90/100] | Step [100/581] | Loss: 1.2098
+Epoch [90/100] | Step [200/581] | Loss: 0.8941
+Epoch [90/100] | Step [300/581] | Loss: 1.1511
+Epoch [90/100] | Step [400/581] | Loss: 1.2823
+Epoch [90/100] | Step [500/581] | Loss: 1.4749
+--- Epoch [90/100] Complete | Avg Loss: 1.4664 ---
+Epoch [91/100] | Step [100/581] | Loss: 1.6944
+Epoch [91/100] | Step [200/581] | Loss: 1.0454
+Epoch [91/100] | Step [300/581] | Loss: 0.8063
+Epoch [91/100] | Step [400/581] | Loss: 1.9359
+Epoch [91/100] | Step [500/581] | Loss: 1.7547
+--- Epoch [91/100] Complete | Avg Loss: 1.4509 ---
+Epoch [92/100] | Step [100/581] | Loss: 1.0708
+Epoch [92/100] | Step [200/581] | Loss: 0.8161
+Epoch [92/100] | Step [300/581] | Loss: 1.3621
+Epoch [92/100] | Step [400/581] | Loss: 1.1646
+Epoch [92/100] | Step [500/581] | Loss: 1.3216
+--- Epoch [92/100] Complete | Avg Loss: 1.4638 ---
+Epoch [93/100] | Step [100/581] | Loss: 2.0594
+Epoch [93/100] | Step [200/581] | Loss: 1.6026
+Epoch [93/100] | Step [300/581] | Loss: 1.6267
+Epoch [93/100] | Step [400/581] | Loss: 1.0065
+Epoch [93/100] | Step [500/581] | Loss: 0.9533
+--- Epoch [93/100] Complete | Avg Loss: 1.4516 ---
+Epoch [94/100] | Step [100/581] | Loss: 1.6123
+Epoch [94/100] | Step [200/581] | Loss: 1.1746
+Epoch [94/100] | Step [300/581] | Loss: 0.9179
+Epoch [94/100] | Step [400/581] | Loss: 2.2075
+Epoch [94/100] | Step [500/581] | Loss: 1.0954
+--- Epoch [94/100] Complete | Avg Loss: 1.4436 ---
+Epoch [95/100] | Step [100/581] | Loss: 1.7154
+Epoch [95/100] | Step [200/581] | Loss: 1.1622
+Epoch [95/100] | Step [300/581] | Loss: 1.4448
+Epoch [95/100] | Step [400/581] | Loss: 1.4999
+Epoch [95/100] | Step [500/581] | Loss: 1.4562
+--- Epoch [95/100] Complete | Avg Loss: 1.4362 ---
+Epoch [96/100] | Step [100/581] | Loss: 2.0326
+Epoch [96/100] | Step [200/581] | Loss: 1.6436
+Epoch [96/100] | Step [300/581] | Loss: 1.1944
+Epoch [96/100] | Step [400/581] | Loss: 1.7653
+Epoch [96/100] | Step [500/581] | Loss: 1.0835
+--- Epoch [96/100] Complete | Avg Loss: 1.4188 ---
+Epoch [97/100] | Step [100/581] | Loss: 1.3890
+Epoch [97/100] | Step [200/581] | Loss: 1.7911
+Epoch [97/100] | Step [300/581] | Loss: 1.8913
+Epoch [97/100] | Step [400/581] | Loss: 1.6868
+Epoch [97/100] | Step [500/581] | Loss: 1.1486
+--- Epoch [97/100] Complete | Avg Loss: 1.4372 ---
+Epoch [98/100] | Step [100/581] | Loss: 1.0909
+Epoch [98/100] | Step [200/581] | Loss: 1.0777
+Epoch [98/100] | Step [300/581] | Loss: 0.7531
+Epoch [98/100] | Step [400/581] | Loss: 1.5910
+Epoch [98/100] | Step [500/581] | Loss: 1.2994
+--- Epoch [98/100] Complete | Avg Loss: 1.4597 ---
+Epoch [99/100] | Step [100/581] | Loss: 0.8239
+Epoch [99/100] | Step [200/581] | Loss: 1.6862
+Epoch [99/100] | Step [300/581] | Loss: 1.9933
+Epoch [99/100] | Step [400/581] | Loss: 1.2145
+Epoch [99/100] | Step [500/581] | Loss: 1.7912
+--- Epoch [99/100] Complete | Avg Loss: 1.4701 ---
+Epoch [100/100] | Step [100/581] | Loss: 1.1250
+Epoch [100/100] | Step [200/581] | Loss: 0.8872
+Epoch [100/100] | Step [300/581] | Loss: 1.3789
+Epoch [100/100] | Step [400/581] | Loss: 1.5742
+Epoch [100/100] | Step [500/581] | Loss: 1.3004
+--- Epoch [100/100] Complete | Avg Loss: 1.4128 ---
