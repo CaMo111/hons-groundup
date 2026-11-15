@@ -15,7 +15,7 @@ import argparse
 BATCH_SIZE = 32
 # LIGAND/PROTEIN_3D: FALSE IF ONLY SCALAR, TRUE IF UTILISING 3D FEATURES
 LIGAND_3D = False # 
-PROTEIN_3D = False  #
+PROTEIN_3D = True  #
 
 class IndividualPTDataset(Dataset):
     def __init__(self, ligand_3d, protein_3d, folder_path="./database/processedfeatures"):
@@ -82,10 +82,16 @@ def main():
     x = dataset[0]['protein'].x
     protein_dim = (x[0].shape[1], x[1].shape[1]) if args.protein_3d else (x.shape[1], 0)
 
+    # only need edge dims for GVP conv in protein
+    if args.protein_3d:
+        protein_edge_dim = (dataset[0]['protein'].edge_attr[0].shape[1],dataset[0]['protein'].edge_attr[1].shape[1])
+    else:
+        protein_edge_dim = None
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
-    model = AffinityLock(ligand_dim, protein_dim, ligand_3d=args.ligand_3d, protein_3d=args.protein_3d).to(device)
+    model = AffinityLock(ligand_dim, protein_dim, protein_edge_dim, ligand_3d=args.ligand_3d, protein_3d=args.protein_3d).to(device)
     loss = torch.nn.MSELoss()
     optimiser = torch.optim.Adam(model.parameters(), lr=0.001)
 
