@@ -34,7 +34,11 @@ import torch, functools
 from torch import nn
 import torch.nn.functional as F
 from torch_geometric.nn import MessagePassing
-from torch_scatter import scatter_add
+
+# CUDA 13 INCOMPATIABLE WITH SCATTER_ADD, USE TORCH SCATTER INSTEAD 
+# from torch_scatter import scatter_add
+from torch_geometric.utils import scatter
+
 
 def tuple_sum(*args):
     '''
@@ -392,8 +396,12 @@ class GVPConvLayer(nn.Module):
                 self.conv(autoregressive_x, edge_index_backward, edge_attr_backward)
             )
             
-            count = scatter_add(torch.ones_like(dst), dst,
-                        dim_size=dh[0].size(0)).clamp(min=1).unsqueeze(-1)
+            # CUDA 13 INCOMPATIABLE WITH SCATTER_ADD, USE TORCH SCATTER INSTEAD 
+            # count = scatter_add(torch.ones_like(dst), dst,
+            # dim_size=dh[0].size(0)).clamp(min=1).unsqueeze(-1)
+
+            count = scatter(torch.ones_like(dst), dst,
+            dim_size=dh[0].size(0)).clamp(min=1).unsqueeze(-1)
             
             dh = dh[0] / count, dh[1] / count.unsqueeze(-1)
 
