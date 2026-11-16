@@ -34,19 +34,33 @@ class IndividualPTDataset(Dataset):
     def __getitem__(self, idx):
         obj = torch.load(self.file_paths[idx], weights_only=False)
         # THEY ARE ALWAYS IN THE FORM OF (SCALAR FEATURES, VECTOR FEATURES)
+        # BELOW HERE IS PRETTY STUPID, HAVE TO REFACTOR FEATURES. FEATURES NEED TO BE GENERATED
+        # WITH NUM NODES SET IN PYG GRAPH GEN, WITH ALL HAVING (SCALAR, VEC) WITH VEC=0 IF NOT 3D.
+        # --- PROTEIN ---
         if not self.protein_3d:
             if isinstance(obj['protein'].x, (tuple, list)):
                 obj['protein'].x = obj['protein'].x[0]
-            obj['protein'].num_nodes = obj['protein'].x.size(0)
             if hasattr(obj['protein'], 'pos'):
                 del obj['protein'].pos
+        
+        # Explicitly set num_nodes regardless of 2D or 3D
+        if isinstance(obj['protein'].x, (tuple, list)):
+            obj['protein'].num_nodes = obj['protein'].x[0].size(0)
+        else:
+            obj['protein'].num_nodes = obj['protein'].x.size(0)
 
+        # --- LIGAND ---
         if not self.ligand_3d:
             if isinstance(obj['ligand'].x, (tuple, list)):
                 obj['ligand'].x = obj['ligand'].x[0]
-            obj['ligand'].num_nodes = obj['ligand'].x.size(0)
             if hasattr(obj['ligand'], 'pos'):
                 del obj['ligand'].pos
+
+        # Explicitly set num_nodes regardless of 2D or 3D
+        if isinstance(obj['ligand'].x, (tuple, list)):
+            obj['ligand'].num_nodes = obj['ligand'].x[0].size(0)
+        else:
+            obj['ligand'].num_nodes = obj['ligand'].x.size(0)
 
         return obj
 
