@@ -81,7 +81,10 @@ def compute_ligand_node_features(mol):
         feature = atom_features(atom)
         features.append(feature)
 
-    return np.asarray(features, dtype=np.float32)
+    scalarFeatures = np.asarray(features, dtype=np.float32)
+    vectorFeatures = np.zeros(1)
+    nodeFeatures = (scalarFeatures, vectorFeatures)
+    return nodeFeatures
 
 #https://github.com/rachitk/caster-dta/blob/main/utils/create_smiles_features.py 
 def compute_ligand_edge_features(mol):    
@@ -103,13 +106,18 @@ def compute_ligand_edge_features(mol):
         edge_features[bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()] = bond_feats
         edge_features[bond.GetEndAtomIdx(), bond.GetBeginAtomIdx()] = bond_feats
 
-        # USE TO TEST ABOVE FEATS
-    edges = []
-    for bond in mol.GetBonds():
-        edges.append([bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()])
+    edgeScalars = edge_features
+    edgeVectors = np.zeros(1)
+    Feats = (edgeScalars, edgeVectors)
+
+    return Feats
+    # USE TO TEST ABOVE FEATS
+    # edges = []
+    # for bond in mol.GetBonds():
+    #     edges.append([bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()])
     #print(edges)
     #print(edge_features[1][24:34])
     #print("Atom 1 -> Atom 24 features:", edge_features[1, 24])
     #print("Atom 24 -> Atom 1 features:", edge_features[24, 1])
 
-    return edge_features
+    

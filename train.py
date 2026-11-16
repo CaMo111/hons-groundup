@@ -12,13 +12,13 @@ from pathlib import Path
 from torch.utils.data import Dataset
 import argparse
 
-BATCH_SIZE = 32
 # LIGAND/PROTEIN_3D: FALSE IF ONLY SCALAR, TRUE IF UTILISING 3D FEATURES
+BATCH_SIZE = 32
 LIGAND_3D = False # 
 PROTEIN_3D = True  #
 
 class IndividualPTDataset(Dataset):
-    def __init__(self, ligand_3d, protein_3d, folder_path="./database/processedfeatures"):
+    def __init__(self, ligand_3d, protein_3d, folder_path="./database/sample/test/"):
         super().__init__()
         self.folder = Path(folder_path)
         self.file_paths = sorted(list(self.folder.glob("*.pt")))
@@ -33,35 +33,6 @@ class IndividualPTDataset(Dataset):
 
     def __getitem__(self, idx):
         obj = torch.load(self.file_paths[idx], weights_only=False)
-        # THEY ARE ALWAYS IN THE FORM OF (SCALAR FEATURES, VECTOR FEATURES)
-        # BELOW HERE IS PRETTY STUPID, HAVE TO REFACTOR FEATURES. FEATURES NEED TO BE GENERATED
-        # WITH NUM NODES SET IN PYG GRAPH GEN, WITH ALL HAVING (SCALAR, VEC) WITH VEC=0 IF NOT 3D.
-        # --- PROTEIN ---
-        if not self.protein_3d:
-            if isinstance(obj['protein'].x, (tuple, list)):
-                obj['protein'].x = obj['protein'].x[0]
-            if hasattr(obj['protein'], 'pos'):
-                del obj['protein'].pos
-        
-        # Explicitly set num_nodes regardless of 2D or 3D
-        if isinstance(obj['protein'].x, (tuple, list)):
-            obj['protein'].num_nodes = obj['protein'].x[0].size(0)
-        else:
-            obj['protein'].num_nodes = obj['protein'].x.size(0)
-
-        # --- LIGAND ---
-        if not self.ligand_3d:
-            if isinstance(obj['ligand'].x, (tuple, list)):
-                obj['ligand'].x = obj['ligand'].x[0]
-            if hasattr(obj['ligand'], 'pos'):
-                del obj['ligand'].pos
-
-        # Explicitly set num_nodes regardless of 2D or 3D
-        if isinstance(obj['ligand'].x, (tuple, list)):
-            obj['ligand'].num_nodes = obj['ligand'].x[0].size(0)
-        else:
-            obj['ligand'].num_nodes = obj['ligand'].x.size(0)
-
         return obj
 
 def main():
@@ -78,7 +49,7 @@ def main():
     dataset = IndividualPTDataset(
     ligand_3d=args.ligand_3d,
     protein_3d=args.protein_3d,
-    folder_path="./database/processedfeatures"
+    folder_path="./database/sample/test"
     )
     print(f"Found {len(dataset)} preprocessed .pt files.")
 
@@ -90,15 +61,15 @@ def main():
         persistent_workers=True
     )
 
-    x = dataset[0]['ligand'].x
-    ligand_dim = (x[0].shape[1], x[1].shape[1]) if args.ligand_3d else (x.shape[1], 0)
+    lig = dataset[0]['ligand']
+    ligand_dim = (lig.x.shape[1], lig.x_vec) if args.ligand_3d else (lig.x.shape[1], 0)
 
-    x = dataset[0]['protein'].x
-    protein_dim = (x[0].shape[1], x[1].shape[1]) if args.protein_3d else (x.shape[1], 0)
+    prot = dataset[0]['protein']
+    protein_dim = (prot.x.shape[1], prot.x_vec.shape[1]) if args.protein_3d else (prot.x.shape[1], 0)
 
     # only need edge dims for GVP conv in protein
     if args.protein_3d:
-        protein_edge_dim = (dataset[0]['protein'].edge_attr[0].shape[1],dataset[0]['protein'].edge_attr[1].shape[1])
+        protein_edge_dim = (prot.edge_attr.shape[1], prot.edge_vec.shape[1])
     else:
         protein_edge_dim = None
 

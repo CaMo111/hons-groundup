@@ -68,10 +68,12 @@ class Protein3DEncoder(nn.Module):
         
     def forward(self, graph):
         # since protein is 2D, only scalar features, as its (scalar, 0)
-        x = graph.x
+        x = (graph.x, graph.x_vec)
+        e = (graph.edge_attr, graph.edge_vec)
+
         x = self.proj(x)
         for conv in self.convs:
-            x = conv(x, graph.edge_index, graph.edge_attr)
+            x = conv(x, graph.edge_index, e)
         out = self.out(x)
         return global_mean_pool(out, graph.batch)
 

@@ -90,8 +90,8 @@ def compute_residue_node_features(res_coords, res_idents, protein):
     # np.stack joins array along a new axis (ie num of dim ++)
     scalarFeatures = np.concatenate([residueAngleFeats, residueAAFeats, residuePosEncFeats], axis=-1)
     vectorFeatures = np.stack([residueForwardFeatures, residueBackwardFeatures, residueSidechainFeats], axis=1)
+    print(type(scalarFeatures), type(vectorFeatures))
     nodeFeatures=(scalarFeatures, vectorFeatures)
-    #print(nodeFeatures)
 
     return nodeFeatures
 

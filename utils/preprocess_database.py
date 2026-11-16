@@ -16,18 +16,19 @@ from utils.process_ligand import processLigand
 from utils.process_protein import processProtein
 from utils.affinity_dict import affinitydict
 
-def preprocess_database(dict_, database_dir, save_path):
+def preprocess_database(dict_, database_dir, save_path, save=False):
     # create a global .pt dataset that runs features for all 
     # only preprocess all features if not globally done alr
     # then can use dataloader 
-    if not os.path.exists(save_path):
-        print('save path does not exist' )
-    else:
-        print('save path does exist: ', save_path)
+    # if not os.path.exists(save_path):
+    #     print('save path does not exist' )
+    # else:
+    #     print('save path does exist: ', save_path)
 
-    if not os.path.exists(save_path):
+    # if not os.path.exists(save_path):
+    # Utilise save keyword to recalculate features
+    if save:
         aff_dict = dict_
-        dataset = []
         base_path = Path(database_dir)
 
         for year_dir in base_path.iterdir():
@@ -49,11 +50,14 @@ def preprocess_database(dict_, database_dir, save_path):
                         'affinity': target,
                         'pdb_id': pdb_id
                     }         
-                    dataset.append(obj)           
+                    _save = save_path + f"{pdb_id}.pt"
+                    torch.save(obj, _save)         
 
                 except Exception as e:
                     print(f"failed to process {pdb_id}: {e}")
 
-    print(f"successfully process {len(dataset)} protein-ligand pairs")
+        print(f"successfully processed protein-ligand pairs")
 
-    torch.save(dataset, save_path) 
+if __name__ == "__main__":
+    # RUN USING THIS COMMAND: python -m utils.preprocess_database
+    preprocess_database(affinitydict(), './database/sample/', './database/sample/test/', save=True)

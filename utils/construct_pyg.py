@@ -1,39 +1,48 @@
 # cast node + edge scalar/vec features into a PYG Graph. This is necessary as all the NaNs will be chopped off
 import torch
 import torch_geometric as pyg
+import sys
 
 def construct_graph(nodes, edges):
-    # ligand features are both numpy arrays, but protein features (nodes/edges) are both tuples 
-    #for protein nodes: FUNCTION TAKEN FROM CASTER-DTA
-    if(isinstance(nodes, tuple)):
-        node_features = tuple(torch.tensor(feat, dtype=torch.float32) for feat in nodes)
-        n_residues = node_features[0].shape[0]
-    #for ligand nodes
-    else:
-        node_features = torch.tensor(nodes, dtype=torch.float32)
-        n_residues = node_features.shape[0]
-
+    # always in tuple form of (scalar, vector), even when not in 3D.
+    node_scalar = torch.tensor(nodes[0], dtype=torch.float32)
+    node_vector = torch.tensor(nodes[1], dtype=torch.float32)
+    n_residues = node_scalar.shape[0]
+    
     edge_index = torch.tensor([[i, j] for i in range(n_residues) for j in range(n_residues)], dtype=torch.long).t().contiguous()
 
-    # protein edges
-    if(isinstance(edges, tuple)):
-        edge_attr = tuple(torch.tensor(feat, dtype=torch.float32).flatten(0,1) for feat in edges)
-        edge_nan_checker = edge_attr[0]
-    #ligand edges
-    else:
-        edge_attr = torch.tensor(edges, dtype=torch.float32).flatten(0,1)
-        edge_nan_checker = edge_attr
+    edge_scalar = torch.tensor(edges[0], dtype=torch.float32).flatten(0,1)
+    edge_vector = torch.tensor(edges[1], dtype=torch.float32)
 
-    # CUT OUT NAN (THIS IS SUPER IMPORTANT):
-    keep_indices = (~torch.isnan(edge_nan_checker).all(axis=-1))
+    is_dummy = (edge_vector.dim() == 1)
+    # IF VECTOR FEATURES ARE POPULATED
+    if not is_dummy:
+        edge_vector = edge_vector.flatten(0,1)
+
+    keep_indices = (~torch.isnan(edge_scalar).all(axis=-1))
     edge_index = edge_index[:,keep_indices]
-    if(isinstance(edges, tuple)):
-        edge_attr = tuple(feat[keep_indices,:] for feat in edge_attr)
-    else:
-        edge_attr = edge_attr[keep_indices,:]
+    edge_scalar = edge_scalar[keep_indices,:]
+
+    # IF VECTOR FEATURES ARE POPULATED
+    if not is_dummy:
+        edge_vector = edge_vector[keep_indices,:]
+
+    edge_attr = (edge_scalar, edge_vector)
+
     
-    pyg_data = pyg.data.Data(x=node_features, edge_index=edge_index, edge_attr=edge_attr)
+    pyg_data = pyg.data.Data(
+        x=node_scalar,           
+        x_vec=node_vector,       
+        edge_index=edge_index, 
+        edge_attr=edge_scalar,   
+        edge_vec=edge_vector, 
+        num_nodes=n_residues
+    )
+    # pyg_data = pyg.data.Data(x=node_features, edge_index=edge_index, edge_attr=edge_attr, num_nodes=n_residues)
+    
     return pyg_data
+
+
     """
     FOR PROTEINS:
     x_scalar, x_vector = pyg_data.x
